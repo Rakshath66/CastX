@@ -12,7 +12,7 @@ import { authMiddleware } from "@clerk/nextjs";
 export default authMiddleware({
   publicRoutes: [
     "/",
-    "/api/webhooks(.*)",
+    "/api/webhooks(.*)", //webhook can be recieved from without authentication from clerk
   ],
 });
  

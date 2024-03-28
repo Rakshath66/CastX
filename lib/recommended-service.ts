@@ -47,6 +47,13 @@ export const getRecommended = async () => {
                     },
                 ],
             },
+            include: {
+                stream: {  //sending whole stream(has sensitive informations) to client side is dangerous, can will visible in js bundles
+                    select: {
+                        isLive: true,
+                    }
+                }
+            },
             orderBy: {
                 createdAt: "desc"
             }
@@ -54,6 +61,13 @@ export const getRecommended = async () => {
     }
     else {
         users = await db.user.findMany({
+            include: {
+                stream: {
+                    select: {
+                        isLive: true,
+                    }
+                }
+            },
             orderBy: {
                 createdAt: "desc"
             }

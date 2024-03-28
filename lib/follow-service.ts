@@ -1,6 +1,5 @@
 import { db } from "./db";
 import { getSelf } from "./auth-service";
-import { Console } from "console";
 
 // get all the users i followed, exclue users who blocked me
 export const getFollowedUsers = async () => {
@@ -19,7 +18,15 @@ export const getFollowedUsers = async () => {
                 }
             },
             include: {
-                following: true,
+                following: {
+                    include: {
+                        stream: {
+                            select: {
+                                isLive: true,
+                            }
+                        },
+                    }
+                }
             }
         })
 
