@@ -16,7 +16,8 @@ export const getRecommended = async () => {
     let users = [];
 
     // (if user is me) or (if i follow the user,) dont show me and him in recommended list
-    //  recommend the user, if user is not me and the ones i follow
+    //  recommend the user, if user is not me and not the ones i follow
+    //  and if they not blocked me
     if(userId) {
         users = await db.user.findMany({
             where: {
@@ -31,6 +32,15 @@ export const getRecommended = async () => {
                             followedBy: {
                                 some: {
                                     followerId: userId,
+                                }
+                            }
+                        },
+                    },
+                    {
+                        NOT: {
+                            blocking: {
+                                some: {
+                                    blockedId: userId,
                                 }
                             }
                         },

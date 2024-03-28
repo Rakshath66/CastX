@@ -2,13 +2,21 @@ import { db } from "./db";
 import { getSelf } from "./auth-service";
 import { Console } from "console";
 
+// get all the users i followed, exclue users who blocked me
 export const getFollowedUsers = async () => {
     try {
         const self = await getSelf();
 
         const followedUsers = await db.follow.findMany({
             where: {
-                followerId: self.id
+                followerId: self.id,
+                following: {
+                    blocking: {
+                        none: {
+                            blockedId: self.id,
+                        }
+                    }
+                }
             },
             include: {
                 following: true,
