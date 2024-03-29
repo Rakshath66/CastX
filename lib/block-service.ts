@@ -1,7 +1,7 @@
 import { db } from "./db";
 import { getSelf } from "./auth-service";
 
-// did he blocked me?
+// did he blocked loggedin user?
 export const isBlockedByUser = async (id: string) => {
     try {
         const self = await getSelf();
