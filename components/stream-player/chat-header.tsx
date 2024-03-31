@@ -1,7 +1,8 @@
 "use client";
 
+import { Skeleton } from "@/components/ui/skeleton";
+
 import { ChatToggle } from "./chat-toggle";
-import { Skeleton } from "../ui/skeleton";
 import { VariantToggle } from "./variant-toggle";
 
 export const ChatHeader = () => {

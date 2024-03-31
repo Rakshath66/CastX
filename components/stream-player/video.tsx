@@ -3,19 +3,22 @@
 //online, offline or loading
 //hooks for current status of the stream
 import { ConnectionState, Track } from "livekit-client";
-import {
-   useConnectionState,
-   useRemoteParticipant,
-   useTracks,
+import { 
+  useConnectionState,
+  useRemoteParticipant,
+  useTracks,
 } from "@livekit/components-react"
+
+import { Skeleton } from "@/components/ui/skeleton";
+
 import { OfflineVideo } from "./offline-video";
 import { LoadingVideo } from "./loading-video";
 import { LiveVideo } from "./live-video";
 
 interface VideoProps {
-    hostName: string;
-    hostIdentity: string;
-}
+  hostName: string;
+  hostIdentity: string;
+};
 
 //connection, participant and their tracks connected
 export const Video = ({
@@ -46,3 +49,11 @@ export const Video = ({
      </div>
   );
 };
+
+export const VideoSkeleton = () => {
+   return (
+     <div className="aspect-video border-x border-background">
+       <Skeleton className="h-full w-full rounded-none" />
+     </div>
+   );
+ };
