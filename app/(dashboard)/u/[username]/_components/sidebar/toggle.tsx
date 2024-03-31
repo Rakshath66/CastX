@@ -1,6 +1,6 @@
 "use client"
 
-import { useCreatorSidebar } from "@/store/use-creator-sidebar"
+import { useCreatorSidebar } from "@/store/use-creator-sidebar";
 import { Wrapper } from "./wrapper"
 import { Hint } from "@/components/hint";
 import { Button } from "@/components/ui/button";
