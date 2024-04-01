@@ -22,8 +22,8 @@ export const createViewerToken = async (hostIdentity: string) => {
 
     const host = await getUserById(hostIdentity);
 
-    if(!host) {
-        throw new Error("User not found!");
+    if (!host) {
+        throw new Error("User not found");
     }
 
     // if blocked by host
@@ -38,13 +38,13 @@ export const createViewerToken = async (hostIdentity: string) => {
 
     //if host is watching, we cannot have same id twice(stream creator and viewer) so host-id
     const token = new AccessToken(
-        process.env.LIVEKIT_API_KEY,
-        process.env.LIVEKIT_API_SECRET,
+        process.env.LIVEKIT_API_KEY!,
+        process.env.LIVEKIT_API_SECRET!,
         {
-            identity: isHost ? `host-${self.id}` : self.id,
-            name: self.username,
-        },
-    )
+          identity: isHost ? `host-${self.id}` : self.id,
+          name: self.username,
+        }
+    );
 
     //permission to the token
     token.addGrant({
@@ -52,7 +52,7 @@ export const createViewerToken = async (hostIdentity: string) => {
         roomJoin: true,
         canPublish: false,
         canPublishData: true,
-    })
-
+    });
+    
     return await Promise.resolve(token.toJwt());
 }
