@@ -1,7 +1,9 @@
 "use client";
 
-import { useSidebar } from "@/store/use-sidebar";
 import { Follow, User } from "@prisma/client";
+
+import { useSidebar } from "@/store/use-sidebar";
+
 import { UserItem, UserItemSkeleton } from "./user-item";
 
 //data - type is Follow, following in it are user type
@@ -23,20 +25,20 @@ export const Following = ({
     return (
         <div>
             {!collapsed && (
-                <div className="pl-6 mb-5">
+                <div className="pl-6 mb-4">
                     <p className="text-sm text-muted-foreground">
-                        Following!
+                        Following
                     </p>
                 </div>
             )}
-            <ul>
+            <ul className="space-y-2 px-2">
                 {data.map((follow) => (
-                    <UserItem
-                       key={follow.following.id}
-                       username={follow.following.username}
-                       imageUrl={follow.following.imageUrl}
-                       isLive={follow.following.stream?.isLive}
-                    />
+                <UserItem
+                    key={follow.following.id}
+                    username={follow.following.username}
+                    imageUrl={follow.following.imageUrl}
+                    isLive={follow.following.stream?.isLive}
+                />
                 ))}
             </ul>
         </div>

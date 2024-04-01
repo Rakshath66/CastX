@@ -44,9 +44,9 @@ export const UserItem = ({
                     collapsed && "justify-center",
                 )}>
                   <UserAvatar
-                  imageUrl={imageUrl}
-                  username={username}
-                  isLive={isLive}
+                    imageUrl={imageUrl}
+                    username={username}
+                    isLive={isLive}
                 //   showBadge
                   />
 
@@ -57,7 +57,7 @@ export const UserItem = ({
                   )}
 
                   {!collapsed && isLive && (
-                    <LiveBadge />
+                    <LiveBadge className="ml-auto" />
                   )}
                 </div>
             </Link>
@@ -73,5 +73,5 @@ export const UserItemSkeleton = () => {
                 <Skeleton className="h-6" />
             </div>
         </li>
-    )
+    );
 }
