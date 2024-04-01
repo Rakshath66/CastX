@@ -48,16 +48,16 @@ export const Navigation = () => {
     }
 
     return (
-        <ul>
+        <ul className="space-y-2 px-2 pt-4 lg:pt-0">
             {routes.map((route) => (
                 <NavItem
-                  key={route.href}
-                  label={route.label}
-                  icon={route.icon}
-                  href={route.href}
-                  isActive={pathname === route.href}
+                    key={route.href}
+                    label={route.label}
+                    icon={route.icon}
+                    href={route.href}
+                    isActive={pathname === route.href}
                 />
             ))}
         </ul>
-    )
+      );
 }

@@ -1,10 +1,10 @@
-"use client"
+"use client";
 
-import { useCreatorSidebar } from "@/store/use-creator-sidebar";
-import { Wrapper } from "./wrapper"
+import { ArrowLeftFromLine, ArrowRightFromLine } from "lucide-react";
+
 import { Hint } from "@/components/hint";
 import { Button } from "@/components/ui/button";
-import { ArrowLeftFromLine, ArrowRightFromLine } from "lucide-react";
+import { useCreatorSidebar } from "@/store/use-creator-sidebar";
 
 export const Toggle = () => {
     const { 
@@ -18,12 +18,12 @@ export const Toggle = () => {
     return (
         <>
            {collapsed && (
-                <div className="hidden lg:flex w-full items-center justify-center pt-4 mb-4">
+                <div className="w-full hidden lg:flex items-center justify-center pt-4 mb-4">
                     <Hint label={label} side="right" asChild>
                         <Button 
                         onClick={onExpand}
                         variant="ghost" 
-                        className="h-auto p-2 ml-auto"
+                        className="h-auto p-2"
                         >
                             <ArrowRightFromLine className="h-4 w-4" />
                         </Button>
@@ -31,7 +31,7 @@ export const Toggle = () => {
                 </div>
             )}
             {!collapsed && (
-                <div className="p-3 pl-6 mb-2 flex items-center w-full">
+                <div className="p-3 pl-6 mb-2 hidden lg:flex items-center w-full">
                     <p className="font-semibold text-primary">
                         Dashboard
                     </p>

@@ -1,12 +1,12 @@
 "use client";
 
+import Link from "next/link";
 import { LucideIcon } from "lucide-react";
 
-import { useCreatorSidebar } from "@/store/use-creator-sidebar";
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
 import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
+import { useCreatorSidebar } from "@/store/use-creator-sidebar";
 
 interface NavItemProps {
     icon: LucideIcon,
