@@ -6,7 +6,7 @@ import { ColumnDef } from "@tanstack/react-table";
 import { Button } from "@/components/ui/button";
 import { UserAvatar } from "@/components/user-avatar";
 
-// import { UnblockButton } from "./unblock-button";
+import { UnblockButton } from "./unblock-button";
 
 // This type is used to define the shape of our data.
 // You can use a Zod schema here if you want.
@@ -55,6 +55,6 @@ export const columns: ColumnDef<BlockedUser>[] = [
   },
   {
     id: "actions",
-    // cell: ({ row }) => <UnblockButton userId={row.original.userId} />
+    cell: ({ row }) => <UnblockButton userId={row.original.userId} />
   },
 ]

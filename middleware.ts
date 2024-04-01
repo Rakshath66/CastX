@@ -15,6 +15,7 @@ export default authMiddleware({
     "/api/webhooks(.*)", //webhook can be recieved from without authentication from clerk
     "/api/uploadthing",
     "/:username",
+    "/search"
   ],
 });
  

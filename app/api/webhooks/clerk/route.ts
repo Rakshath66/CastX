@@ -3,6 +3,7 @@ import { headers } from 'next/headers'
 import { WebhookEvent } from '@clerk/nextjs/server'
 
 import { db } from '@/lib/db'
+import { resetIngresses } from '@/actions/ingress'
  
 export async function POST(req: Request) {
  
@@ -94,6 +95,9 @@ export async function POST(req: Request) {
     }
 
     if(eventType === "user.deleted") {
+      // if host is running stream and account gets deleted - we end ingress for that user so he don't span our application
+      await resetIngresses(payload.data.id);
+
         await db.user.delete({
             where: {
                 externalUserId: payload.data.id,
