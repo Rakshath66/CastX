@@ -13,6 +13,8 @@ export default authMiddleware({
   publicRoutes: [
     "/",
     "/api/webhooks(.*)", //webhook can be recieved from without authentication from clerk
+    "/api/uploadthing",
+    "/:username",
   ],
 });
  
