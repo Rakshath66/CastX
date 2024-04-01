@@ -1,11 +1,11 @@
 "use client";
 
+import { toast } from "sonner";
 import { useTransition } from "react";
 
+import { onBlock, onUnblock } from "@/actions/block";
 import { onFollow, onUnfollow } from "@/actions/follow";
 import { Button } from "@/components/ui/button";
-import { toast } from "sonner";
-import { onBlock, onUnblock } from "@/actions/block";
 
 interface ActionsProps {
     isFollowing: boolean;
@@ -19,8 +19,8 @@ export const Actions = ({isFollowing, userId}: ActionsProps) => {
         // console.log(userId)
         startTransition(() => {
             onFollow(userId)
-            .then((data) => toast.success(`You are now following ${data.following.username}`))
-            .catch(() => toast.error("Something went wrong"))
+              .then((data) => toast.success(`You are now following ${data.following.username}`))
+              .catch(() => toast.error("Something went wrong"));
         });
     }
 
@@ -28,8 +28,8 @@ export const Actions = ({isFollowing, userId}: ActionsProps) => {
         // console.log(userId)
         startTransition(() => {
             onUnfollow(userId)
-            .then((data) => toast.success(`You have Unfollowed ${data.following.username}`))
-            .catch(() => toast.error("Something went wrong"))
+              .then((data) => toast.success(`You have unfollowed ${data.following.username}`))
+              .catch(() => toast.error("Something went wrong"));
         });
     }
 
@@ -43,10 +43,10 @@ export const Actions = ({isFollowing, userId}: ActionsProps) => {
 
     const handleBlock = () => {
         startTransition(() => {
-            onBlock(userId)
-               .then((data) => toast.success(`Blocked the user ${data.blocked.username}`))
-               .catch(() => toast.error("Something went wrong"));
-        })
+            onUnblock(userId)
+              .then((data) => toast.success(`Unblocked the user ${data.blocked.username}`))
+              .catch(() => toast.error("Something went wrong"));
+        });
     }
 
     return (
@@ -58,7 +58,7 @@ export const Actions = ({isFollowing, userId}: ActionsProps) => {
             >
                 {isFollowing ? "Unfollow" : "Follow"}
             </Button>
-            <Button onClick={handleBlock}>
+            <Button onClick={handleBlock} disabled={isPending}>
                 Block
             </Button>
         </>
