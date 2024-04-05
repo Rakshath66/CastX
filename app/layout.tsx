@@ -27,7 +27,7 @@ export default function RootLayout({
           <ThemeProvider
             attribute='class'
             forcedTheme='dark'
-            storageKey='gamehub-theme'
+            storageKey='castx-theme'
           >
             <Toaster theme="light" position="bottom-center" />
             {children}
